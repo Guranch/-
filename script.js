@@ -19,8 +19,7 @@ function startGame() {
   
   GameRun= true;
   startTime = Date.now();
-  startButton.style.display = 'none';
-  clicker.textContent = score;
+  startButton.textContent = score;
   
   timetwo = setInterval(updateTimer, 1000);
 }
@@ -29,7 +28,7 @@ function plusScore() {
   if (!GameRun) return;
   
   score++;
-  clicker.textContent = score;
+  startButton.textContent = score;
   clickCount++;
 }
 
@@ -74,6 +73,5 @@ function tryAgain() {
 }
 
 startButton.addEventListener('click', startGame);
-clicker.addEventListener('click', plusScore);
+startButton.addEventListener('click', plusScore);
 tryAgainButton.addEventListener('click', tryAgain);
-
