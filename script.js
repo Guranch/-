@@ -26,7 +26,7 @@ function startGame() {
 
 function plusScore() {
   if (!GameRun) return;
-  
+  startButton.removeEventListener('click', startGame)
   score++;
   startButton.textContent = score;
   clickCount++;
@@ -57,7 +57,7 @@ function endGame() {
 
   const average = (endTime - startTime) / 1000;
   const averageclicktime = clickCount / average;
-  clickPerSecond.textContent = averageclicktime.toFixed();
+  clickPerSecond.textContent = averageclicktime.toFixed(1);
   
 
   score = 0;
@@ -69,9 +69,12 @@ function tryAgain() {
   tryAgainButton.style.display = 'none';
   startButton.style.display = 'block';
   timer.textContent = time;
+  startButton.addEventListener('click',startGame)
+  startButton.textContent="start";
   clickPerSecond.textContent = '';
 }
 
 startButton.addEventListener('click', startGame);
 startButton.addEventListener('click', plusScore);
 tryAgainButton.addEventListener('click', tryAgain);
+
